@@ -1,0 +1,36 @@
+<header>
+    <header>
+        <nav class="navbar navbar-inverse">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand">{{ message }}</a>
+            </div>
+        </nav>
+    </header>
+</header>
+
+<div class="row">
+    <div class="col-sm-4">
+
+        <ul class="list-group">
+            <li class="list-group-item user-list" [class.active]="user === activeUser" *ngFor="let user of users" (click)="selectUser(user)" >
+                {{ user.first_name }} {{user.last_name}}
+            </li>
+        </ul>
+
+        <user-form (userCreated)="onUserCreated($event);" ></user-form>
+
+    </div>
+    <div class="col-sm-8">
+
+        <user-profile [user]="activeUser" ></user-profile>
+
+        <div class="jumbotron" *ngIf="!activeUser">
+            <h2>No user selected</h2>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    Copyright Mao!
+</footer>
